@@ -22,56 +22,13 @@ bool isFound(int z[], int x, int y);
 void swapN(int x, int y);
 
 void boolPrintResult(int x, int y);
-int hasil(int myarray[]);
 
-int sizeArray;
-
+int input;
 
 int main()
 {
     int x, y;
-
-    cout<<"Masukkan angka X = ";
-    cin>>x;
-    cout<<"Masukkan angka Y = ";
-    cin>>y;
-
     boolPrintResult(x, y);
-    //maxN dan minN
-    cout<<"Bilangan Terbesar Yaitu : "<<maxN(x,y)<<endl;
-    cout<<"Bilangan Terkecil Yaitu : "<<minN(x,y)<<endl;
-
-
-    int input;
-    cout<<"Masukkan jumlah array yang akan di input = ";
-    cin>>input;
-    int z[input];
-    sizeArray = sizeof(z)/sizeof(int);
-    cout<<"Masukkan "<<input<<" Element yang akan di input"<<endl;
-
-    for(int i = 0; i < input; i++)
-    {
-        cout<<"Masukkan bilangan ke - "<< i << " : ";
-        cin>>z[i];
-    }
-
-    cout<<"Max Arraynya Yaitu :"<<maxArray(z)<<endl;
-    cout<<"Min Arraynya Yaitu :"<<minArray(z)<<endl;
-
-
-
-    cout<<"isFound : "<<isFound(z,x,y)<<" || ";
-    if(isFound(z,x,y) == 1)
-    {
-        cout<<"Terdapat angka yang sama di dalam array"<<endl;
-    }
-    else
-    {
-        cout<<"Tidak ada angka yang sama di dalam array"<<endl;
-    }
-
-    swapN(x,y);
-
     return 0;
 }
 
@@ -131,7 +88,7 @@ int minN(int x, int y)
 int maxArray(int z[])
 {
     int maxx = z[0];
-    for(int i=0; i < sizeArray; i++)
+    for(int i=0; i < input; i++)
     {
         if(z[i]>maxx)
         {
@@ -144,7 +101,7 @@ int maxArray(int z[])
 int minArray(int z[])
 {
     int minn = z[0];
-    for(int i=0; i < sizeArray; i++)
+    for(int i=0; i < input; i++)
     {
         if(z[i]<minn)
         {
@@ -159,7 +116,7 @@ bool isFound(int z[], int x, int y)
     int foundOne = x;
     int foundTwo = y;
     bool isFound = false;
-    for(int i=0; i< sizeArray; i++)
+    for(int i=0; i< input; i++)
     {
         if(foundOne == z[i] || foundTwo == z[i] )
         {
@@ -181,38 +138,75 @@ void swapN(int x, int y)
 
 void boolPrintResult(int x, int y)
 {
-    //Even And Odd
-    if (isEven(x, y))
-    {
-        cout <<"[Cek Bilangan Ganjil Or Genap] Angka "<< x << " dan " << y << " Termasuk [isEven]" << endl;
-    }
-    else if (isEven(x, x) && isOdd(y, y))
-    {
-        cout <<"[Cek Bilangan Ganjil Or Genap] Angka "<< x <<" Termasuk [isEven], tetapi " << y << " Termasuk [isOdd]" << endl;
-    }
-    else if (isOdd(x, x) && isEven(y, y))
-    {
-        cout <<"[Cek Bilangan Ganjil Or Genap] Angka "<< x << " Termasuk [isOdd], tetapi " << y << " Termasuk [isEven]" << endl;
-    }
-    else
-    {
-        cout <<"[Cek Bilangan Ganjil Or Genap] Angka "<< x << " dan " << y << " Termasuk [isOdd]" << endl;
-    }
+//    int x, y;
 
-    //isFactor
-    if (isFactor(x, y))
+    cout<<"Masukkan angka X = ";
+    cin>>x;
+    cout<<"Masukkan angka Y = ";
+    cin>>y;
     {
-        cout <<"[Cek Bilangan Factor] Angka "<< x << " dapat di Faktorisasikan dengan " << y << " dan Termasuk [isFactor]" << endl;
+//Even And Odd
+        if (isEven(x, y))
+        {
+            cout <<"[Cek Bilangan Ganjil Or Genap] Angka "<< x << " dan " << y << " Termasuk [isEven]" << endl;
+        }
+        else if (isEven(x, x) && isOdd(y, y))
+        {
+            cout <<"[Cek Bilangan Ganjil Or Genap] Angka "<< x <<" Termasuk [isEven], tetapi " << y << " Termasuk [isOdd]" << endl;
+        }
+        else if (isOdd(x, x) && isEven(y, y))
+        {
+            cout <<"[Cek Bilangan Ganjil Or Genap] Angka "<< x << " Termasuk [isOdd], tetapi " << y << " Termasuk [isEven]" << endl;
+        }
+        else
+        {
+            cout <<"[Cek Bilangan Ganjil Or Genap] Angka "<< x << " dan " << y << " Termasuk [isOdd]" << endl;
+        }
+
+//isFactor
+        if (isFactor(x, y))
+        {
+            cout <<"[Cek Bilangan Factor] Angka "<< x << " dapat di Faktorisasikan dengan " << y << " dan Termasuk [isFactor]" << endl;
+        }
+        else if(!isFactor(x, y))
+        {
+            cout <<"[Cek Bilangan Factor] Angka "<< x << " TIDAK dapat di Faktorisasikan dengan " << y << " dan BUKAN termasuk [isFactor]" << endl;
+        }
+
+//maxN dan minN
+        cout<<"Bilangan Terbesar Yaitu : "<<maxN(x,y)<<endl;
+        cout<<"Bilangan Terkecil Yaitu : "<<minN(x,y)<<endl;
+//Max dan min Array
+        cout<<"Masukkan jumlah array yang akan di input = ";
+        cin>>input;
+        int z[input];
+        cout<<"Masukkan "<<input<<" Element yang akan di input"<<endl;
+
+        for(int i = 0; i < input; i++)
+        {
+            cout<<"Masukkan bilangan ke - "<< i << " : ";
+            cin>>z[i];
+        }
+
+        cout<<"Max Arraynya Yaitu :"<<maxArray(z)<<endl;
+        cout<<"Min Arraynya Yaitu :"<<minArray(z)<<endl;
+
+
+//isFound
+        cout<<"isFound : "<<isFound(z,x,y)<<" || ";
+        if(isFound(z,x,y) == 1)
+        {
+            cout<<"Terdapat angka X / Y yang sama di dalam array"<<endl;
+        }
+        else
+        {
+            cout<<"Tidak ada angka X / Y yang sama di dalam array"<<endl;
+        }
+//swapN
+        swapN(x,y);
+
     }
-    else if(!isFactor(x, y))
-    {
-        cout <<"[Cek Bilangan Factor] Angka "<< x << " TIDAK dapat di Faktorisasikan dengan " << y << " dan BUKAN termasuk [isFactor]" << endl;
-    }
-
-
-
 }
-
 
 
 
